@@ -1,0 +1,253 @@
+﻿# Registration App
+
+A full-stack user registration and authentication application built with React frontend and Python FastAPI backend.
+
+## 🏗️ Architecture
+
+### Backend (Python FastAPI)
+- **Technology**: FastAPI with Python 3.9
+- **Port**: 8000 (mapped to 9091 externally)
+- **Authentication**: JWT token-based authentication
+- **Password Security**: bcrypt hashing
+- **CORS**: Enabled for frontend communication
+
+### Frontend (React)
+- **Technology**: React 18 with Material-UI
+- **Port**: 3000 (mapped to 9090 externally)
+- **State Management**: React Context API
+- **Routing**: React Router DOM
+- **UI Framework**: Material-UI (MUI)
+
+### Database
+- **Technology**: PostgreSQL 13
+- **Port**: 5432 (mapped to 9092 externally)
+- **Status**: Configured but backend currently uses in-memory storage
+
+## 🚀 Features
+
+### Backend API Endpoints
+- `POST /api/register` - User registration
+- `POST /api/token` - User login (OAuth2)
+- `GET /api/users/me` - Get current user info (protected)
+- `GET /api/health` - Health check
+
+### Frontend Components
+- **Login Page** - User authentication
+- **Registration Page** - New user signup
+- **Dashboard** - Protected user dashboard
+- **Auth Context** - Authentication state management
+
+## 📋 Prerequisites
+
+- Docker and Docker Compose
+- Node.js 18+ (for local development)
+- Python 3.9+ (for local development)
+
+## 🛠️ Installation & Setup
+
+### Using Docker (Recommended)
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd registration-app
+   ```
+
+2. **Create environment file**
+   ```bash
+   # Create .env file in the root directory
+   echo "JWT_SECRET_KEY=your-secret-key-here" > .env
+   ```
+
+3. **Build and run with Docker Compose**
+   ```bash
+   docker-compose up --build
+   ```
+
+4. **Access the application**
+   - Frontend: http://localhost:9090
+   - Backend API: http://localhost:9091
+   - Database: localhost:9092
+
+### Local Development
+
+#### Backend Setup
+```bash
+cd backend
+pip install -r requirements.txt
+python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+#### Correct URLs to Test
+
+ ### API Documentation (Swagger UI):
+```
+http://localhost:8000/docs
+```
+
+### Health Check:
+```
+http://localhost:8000/api/health
+```
+
+
+
+#### Frontend Setup
+```bash
+cd frontend
+npm install
+# Set environment variable
+export REACT_APP_API_URL=http://localhost:8000
+npm start
+```
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+# JWT Secret Key for token signing
+JWT_SECRET_KEY=your-secret-key-here
+
+# Database Configuration (if using real database)
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=postgres
+DB_NAME=magax
+```
+
+### Frontend Environment
+
+The frontend expects the following environment variable:
+- `REACT_APP_API_URL` - Backend API URL (default: http://localhost:9091)
+
+## 📁 Project Structure
+
+```
+registration-app/
+├── backend/
+│   ├── main.py              # FastAPI application
+│   ├── requirements.txt     # Python dependencies
+│   └── Dockerfile          # Backend Docker configuration
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Login.js     # Login component
+│   │   │   ├── Register.js  # Registration component
+│   │   │   └── Dashboard.js # Dashboard component
+│   │   ├── contexts/
+│   │   │   └── AuthContext.js # Authentication context
+│   │   ├── App.js           # Main App component
+│   │   └── index.js         # Entry point
+│   ├── package.json         # Frontend dependencies
+│   ├── Dockerfile          # Frontend Docker configuration
+│   └── nginx.conf          # Nginx configuration
+├── docker-compose.yml      # Docker services configuration
+└── README.md              # This file
+```
+
+## 🔐 Authentication Flow
+
+1. **Registration**: User creates account with username, email, and password
+2. **Login**: User authenticates with username/password
+3. **Token**: Backend returns JWT token
+4. **Storage**: Frontend stores token in localStorage
+5. **Protected Routes**: Token used for API calls and route protection
+
+## 🐳 Docker Services
+
+| Service | Port | Description |
+|---------|------|-------------|
+| frontend | 9090 | React application |
+| backend | 9091 | FastAPI application |
+| db | 9092 | PostgreSQL database |
+
+## 🚨 Known Issues
+
+1. **In-Memory Storage**: Backend currently uses in-memory storage instead of PostgreSQL
+2. **No Database Persistence**: User data is lost on server restart
+3. **Missing Environment Setup**: .env file needs to be created manually
+
+## 🔄 Development Commands
+
+### Backend
+```bash
+# Run with auto-reload
+uvicorn main:app --reload
+
+# Run with specific host/port
+uvicorn main:app --host 0.0.0.0 --port 8000
+```
+
+### Frontend
+```bash
+# Start development server
+npm start
+
+# Build for production
+npm run build
+
+# Run tests
+npm test
+```
+
+### Docker
+```bash
+# Build and start all services
+docker-compose up --build
+
+# Start in background
+docker-compose up -d
+
+# Stop all services
+docker-compose down
+
+# View logs
+docker-compose logs -f
+```
+
+## 🧪 Testing
+
+### Backend API Testing
+```bash
+# Health check
+curl http://localhost:9091/api/health
+
+# Register user
+curl -X POST http://localhost:9091/api/register \
+  -H "Content-Type: application/json" \
+  -d '{"username":"testuser","email":"test@example.com","password":"testpass"}'
+
+# Login
+curl -X POST http://localhost:9091/api/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "username=testuser&password=testpass"
+```
+
+## 📝 API Documentation
+
+Once the backend is running, you can access the interactive API documentation at:
+- Swagger UI: http://localhost:9091/docs
+- ReDoc: http://localhost:9091/redoc
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🆘 Support
+
+
+For support and questions, please open an issue in the repository or contact the development team.
+
+

@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "9090:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:9091
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "9091:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/magax
+      - SECRET_KEY=${JWT_SECRET_KEY:-default-dev-key-change-in-production}
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=magax
+    ports:
+      - "9092:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data: 
