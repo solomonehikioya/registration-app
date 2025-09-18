@@ -253,7 +253,7 @@ This message shows that your installation appears to be working correctly.
 
 ```
 git clone https://github.com/emanet1/registration-app.git
-cd  examples
+cd  first-docker-file
 ```
 
 ### Login to Docker [Create an account with https://hub.docker.com/]
