@@ -151,7 +151,11 @@ docker run -d --name reg-backend -p 8000:8000 reg-backend
 docker run -d --name reg-frontend -p 3000:3000 frontend:latest
 ```
 
-
+### Exec into the Containers
+```
+docker exec -it reg-frontend sh
+docker exec -it reg-backend sh
+```
 
 
 ## 📁 Project Structure
