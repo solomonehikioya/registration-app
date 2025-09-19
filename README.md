@@ -49,7 +49,7 @@ A full-stack user registration and authentication application built with React f
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/emanet1/registration-app.git
    cd registration-app
    ```
 
@@ -123,6 +123,30 @@ DB_NAME=magax
 
 The frontend expects the following environment variable:
 - `REACT_APP_API_URL` - Backend API URL (default: http://localhost:9091)
+
+
+### Build Backend Image using Docker
+```
+docker build -t reg-backend .
+```
+
+### Build FrontEnd Image using Docker
+```
+docker build --build-arg REACT_APP_API_URL=http://localhost:8000 -t frontend .
+```
+
+### RUN Backend using Docker
+```
+docker run -d --name reg-backend -p 8000:8000 reg-backend
+```
+
+### RUN Frontend using Docker
+```
+docker run -d --name reg-frontend -p 3000:3000 frontend:latest
+```
+
+
+
 
 ## 📁 Project Structure
 
