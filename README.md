@@ -9,7 +9,7 @@ A full-stack user registration and authentication application built with React f
 
 ## 🏗️ High Architecture
 
-[High Level Architecture](https://github.com/emanet1/registration-app/blob/8a81133aa78e65b90fb24daff2a96fe3754932ec/images/high-level-arch.png)
+![High Level Architecture](https://github.com/emanet1/registration-app/blob/8a81133aa78e65b90fb24daff2a96fe3754932ec/images/high-level-arch.png)
 
 
 
