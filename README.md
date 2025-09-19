@@ -9,6 +9,12 @@ A full-stack user registration and authentication application built with React f
 ![Image alt](https://github.com/emanet1/registration-app/blob/4644d4a56d5ac975537669b9d834bd72089a070b/images/low-level-arch.png)
 
 
+## 🏗️ Low Architecture
+
+
+
+
+
 ### Backend (Python FastAPI)
 - **Technology**: FastAPI with Python 3.9
 - **Port**: 8000 (mapped to 9091 externally)
