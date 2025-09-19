@@ -158,6 +158,74 @@ docker exec -it reg-backend sh
 ```
 
 
+# What are Docker Volumes?
+
+In Docker, a volume is a persistent storage mechanism for containers. By default, any data created inside a container is ephemeral—it disappears when the container stops or is removed. Volumes solve this problem by providing:
+
+Persistence: Data survives container restarts or removals.
+
+Sharing: Multiple containers can access the same data.
+
+Separation of concerns: Keeps container filesystem clean while storing data outside.
+
+Volumes are stored on the host filesystem but managed by Docker.
+
+
+
+# Types of Docker Storage
+
+Volumes – Recommended. Managed by Docker, easy to back up and share.
+
+Bind mounts – Directly map host directory to container. Gives more control but less portable.
+
+Tmpfs mounts – Stored in host RAM, non-persistent.
+
+We’ll focus on volumes & Bing Mounts
+
+
+## We’ll use volumes and bind mounts  reg-backend (FastAPI) and reg-frontend (Nginx).
+
+
+## Create a named volume
+
+```
+docker volume create backend_data
+docker volume ls
+```
+
+## Use a volume in your backend container
+Persist files at /data inside reg-backend:
+
+```
+docker rm -f reg-backend
+docker run -d --name reg-backend -p 8000:8000 -v backend_data:/data reg-backend
+```
+
+ !!! Anything written to /data will survive container removal.
+
+
+### Quick persistence check:
+
+```
+docker exec -it reg-backend sh -c "echo hello > /data/hello.txt && ls -l /data"
+docker rm -f reg-backend
+docker run -d --name reg-backend -p 8000:8000 -v backend_data:/data reg-backend
+docker exec -it reg-backend sh -c "cat /data/hello.txt"
+```
+
+
+##Bind mount (live-edit) your backend code
+Mount your local backend folder into the container:
+
+```
+docker rm -f reg-backend
+MSYS_NO_PATHCONV=1 docker run -d --name reg-backend -p 8000:8000 \
+  -v "C:/Users/user/Documents/Organization/DIGITAL-WITCH/DOCKER/practical-class/registration-app/backend:/app" \
+  reg-backend
+docker exec -it reg-backend sh -c 'echo hi > /app/test.txt'
+```
+
+
 ## 📁 Project Structure
 
 ```
