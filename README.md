@@ -130,6 +130,12 @@ The frontend expects the following environment variable:
 docker build -t reg-backend .
 ```
 
+### Build Backend Image using single stage build
+```
+docker build -t reg-frontend-single:latest --build-arg REACT_APP_API_URL=http://localhost:8000 .
+```
+
+
 ### Build FrontEnd Image using Docker
 ```
 docker build --build-arg REACT_APP_API_URL=http://localhost:8000 -t frontend .
