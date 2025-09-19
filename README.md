@@ -6,8 +6,7 @@ A full-stack user registration and authentication application built with React f
 
 
 
-![Screenshot]practical-class/registration-app/images/low-level-arch.png
-
+![Low Level Architecture](practical-class/registration-app/images/low-level-arch.png)
 
 
 
