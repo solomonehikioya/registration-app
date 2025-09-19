@@ -2,7 +2,16 @@
 
 A full-stack user registration and authentication application built with React frontend and Python FastAPI backend.
 
-## 🏗️ Architecture
+## 🏗️ High Architecture
+
+
+
+![Screenshot]practical-class/registration-app/images/low-level-arch.png
+
+
+
+
+
 
 ### Backend (Python FastAPI)
 - **Technology**: FastAPI with Python 3.9
