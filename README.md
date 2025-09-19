@@ -6,10 +6,7 @@ A full-stack user registration and authentication application built with React f
 
 
 
-![Low Level Architecture](practical-class/registration-app/images/low-level-arch.png)
-
-
-
+![Image alt](https://github.com/emanet1/registration-app/blob/4644d4a56d5ac975537669b9d834bd72089a070b/images/low-level-arch.png)
 
 
 ### Backend (Python FastAPI)
