@@ -148,7 +148,7 @@ The frontend expects the following environment variable:
 docker build -t reg-backend .
 ```
 
-### Build Backend Image using single stage build
+### Build frontend Image using single stage build
 ```
 docker build -t reg-frontend-single:latest --build-arg REACT_APP_API_URL=http://localhost:8000 .
 ```
@@ -346,6 +346,14 @@ curl -X POST http://localhost:9091/api/token \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "username=testuser&password=testpass"
 ```
+
+
+## More Docker-Compose real world Examples
+```
+visit https://github.com/docker/awesome-compose
+```
+
+
 
 ## 📝 API Documentation
 
