@@ -5,11 +5,11 @@ services:
     build:
       context: ./frontend
       args:
-        - REACT_APP_API_URL=http://localhost:9091
+        - REACT_APP_API_URL=http://16.16.215.228:9091
     ports:
       - "9090:3000"
     environment:
-      - REACT_APP_API_URL=http://localhost:9091
+      - REACT_APP_API_URL=http://16.16.215.228:9091
     depends_on:
       - backend
 
